@@ -1,110 +1,133 @@
-# 🌌 NEXUS AI — Advanced Autonomous AI Assistant
+# NEXUS
 
-![Nexus AI Banner](config/nexus.ico)
+### AI that notices before you ask.
 
-**Nexus AI** is a state-of-the-art, real-time autonomous multimodal desktop assistant powered by Google Gemini Live. Built with a sleek futuristic HUD interface, autonomous tool routing, proactive monitoring, vision processing, and an extensible drop-in plugin architecture.
+NEXUS is a proactive, phone-first AI assistant designed for students and professionals.
 
----
-
-## ✨ Features
-
-- 🎙️ **Real-Time Voice & Multimodal Interaction**
-  - Ultra-low latency voice communication via Gemini Live (`models/gemini-3.1-flash-live-preview`).
-  - Native interruptibility, live waveform visualization, and dynamic state feedback.
-
-- 🖥️ **Futuristic Sci-Fi HUD Interface**
-  - Cyberpunk-inspired aesthetic with arc-reactor core visualization.
-  - Live system telemetry (CPU, RAM, GPU, thermals) and interactive system drawer.
-  - Floating clipboard companion for quick AI actions.
-
-- 👁️ **Vision & Screen Understanding**
-  - Real-time screen capture and webcam processing for visual reasoning and debugging.
-
-- 💻 **OS & Computer Control**
-  - Complete control over system volume, display brightness, Wi-Fi toggles, app launching, and shortcuts.
-  - Safe confirmation gates for critical system actions.
-
-- 🧠 **Persistent Long-Term Memory & Recall**
-  - Automatically remembers user preferences, personal context, and past interactions.
-  - Instant local recall search without roundtrips.
-
-- 🤖 **Autonomous Dev Agent & Code Execution**
-  - Builds full software projects from scratch directly on your desktop.
-  - Interactive debugging and sandbox code runner.
-
-- 📱 **Mobile Remote Control & Web Dashboard**
-  - Secure QR-code pairing for mobile access over local network.
-  - Web UI for sending commands, file transfers, and remote monitoring.
-
-- 🧩 **Extensible Plugin Ecosystem**
-  - Drop-in `.py` plugins in `plugins/` auto-discovered at boot with zero configuration.
+Instead of waiting for the user to ask a question or manually provide context, NEXUS connects authorized information from the user's digital life, understands relationships between them, identifies what needs attention, and helps execute the next best action.
 
 ---
 
-## 🚀 Quick Start
+## The Problem
 
-### 1. Prerequisites
-- Python 3.10+
-- [Gemini API Key](https://aistudio.google.com/)
+Modern digital work is fragmented.
 
-### 2. Installation
-Clone the repository and install the dependencies:
-```bash
-git clone https://github.com/jeevan-charugundla/-nexus-ai.git
-cd -nexus-ai
-pip install -r requirements.txt
+A single project can involve:
+
+- Tasks
+- Documents
+- Calendar events
+- Notes
+- Notifications
+- Deadlines
+- Conversations
+- Personal goals
+
+The information exists, but the relationships between that information are often hidden.
+
+Users are forced to remember everything themselves and constantly tell their tools what is happening.
+
+NEXUS changes this interaction model.
+
+---
+
+## What NEXUS Does
+
+NEXUS builds a contextual understanding of information the user has explicitly authorized.
+
+It can:
+
+- Understand tasks and goals
+- Extract important information from documents
+- Detect deadlines and dependencies
+- Connect related tasks, files and events
+- Identify changes that require attention
+- Prioritize what matters
+- Recommend the next best action
+- Learn user preferences through interaction
+- Execute actions with user permission
+
+The goal is simple:
+
+> Understand the context. Find what matters. Help get it done.
+
+---
+
+## Example
+
+Imagine a student working on a project.
+
+Their digital context contains:
+
+- A project document with a Friday submission deadline
+- An incomplete architecture task
+- A presentation scheduled for tomorrow
+- Project notes describing required features
+
+The student does not manually tell NEXUS about the deadline.
+
+Once the relevant information has been authorized, NEXUS can connect these pieces of context.
+
+It may recognize:
+
+"The architecture task is incomplete and may block the upcoming presentation and final submission."
+
+NEXUS can then surface:
+
+> Your project submission is due Friday.  
+> The architecture task is still incomplete and may block your presentation.  
+> Recommended next action: Complete the architecture diagram.
+
+With permission, NEXUS can then help execute the required workflow.
+
+---
+
+## How It Works
+
+NEXUS uses a hybrid AI architecture.
+
+```text
+Authorized Data
+      │
+      ▼
+┌─────────────────────┐
+│   Context Engine    │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│    Context Graph    │
+│                     │
+│ Goals               │
+│ Tasks               │
+│ Documents           │
+│ Events              │
+│ Deadlines           │
+│ Dependencies        │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│  LLM Reasoning      │
+│                     │
+│ Intent              │
+│ Relationships       │
+│ Summarization       │
+│ Planning            │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│  Priority Engine    │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│ Next Best Action    │
+└─────────┬───────────┘
+          │
+          ▼
+┌─────────────────────┐
+│ Execution Engine    │
+└─────────────────────┘
 ```
-
-### 3. Running Nexus AI
-```bash
-python main.py
-```
-
-On first launch, the configuration setup drawer will prompt for your **Gemini API Key** and preferred assistant voice.
-
----
-
-## 🛠️ Project Architecture
-
-```
-nexus-ai/
-├── actions/                  # Auto-discovered modular tools & capabilities
-│   ├── background_monitor.py # News & alert background polling
-│   ├── browser_control.py    # Playwright browser automation
-│   ├── code_helper.py        # Code snippet executor & debug tools
-│   ├── computer_control.py   # Mouse, keyboard, and window management
-│   ├── computer_settings.py  # OS brightness, audio, wifi control
-│   ├── dev_agent.py          # Autonomous multi-file project builder
-│   ├── file_processor.py     # Document reading & parsing
-│   ├── screen_processor.py   # Screen & camera vision capture
-│   └── system_monitor.py     # CPU / RAM / GPU metrics
-├── core/                     # Core runtime infrastructure
-│   ├── action_loader.py      # Dynamic tool registration
-│   ├── audio_devices.py      # Input/output audio device selector
-│   ├── installer.py          # On-demand dependency installer
-│   ├── llm_client.py         # Gemini Live WebSocket protocol client
-│   ├── plugin_loader.py      # Drop-in plugin engine
-│   ├── prompt.txt            # Nexus AI core system instructions
-│   └── wake_word.py          # OpenWakeWord local wake detection
-├── dashboard/                # Remote HTTP & WebSocket companion server
-├── memory/                   # Config and persistent memory engine
-├── plugins/                  # Custom drop-in plugins
-├── ui.py                     # PyQt6 HUD user interface
-└── main.py                   # Main orchestration entrypoint
-```
-
----
-
-## ⚙️ Configuration & Customization
-
-All settings can be adjusted via the in-app **Settings (⚙️)** drawer:
-- **Assistant Name**: Default is `Nexus AI`.
-- **Live Voice**: Choose between *Charon*, *Puck*, *Kore*, *Fenrir*, or *Aoede*.
-- **Wake Word**: Enable local hands-free wake word activation.
-- **Audio Devices**: Select dedicated microphone and output devices.
-
----
-
-## 🛡️ License
-
-This project is licensed under the MIT License.
